@@ -9,57 +9,37 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, sans-serif; background: #F5F7FB; color: #111827; }
-
-    /* Nav */
     .nav { background: #fff; border-bottom: 1px solid #E2E6EF; height: 60px; display: flex; align-items: center; padding: 0 40px; }
-
-    /* Page header */
     .page-header { max-width: 680px; margin: 0 auto; padding: 40px 24px 0; }
-    .page-header .eyebrow { font-size: 12px; font-weight: 700; color: #1A56DB; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 8px; }
+    .eyebrow { font-size: 12px; font-weight: 700; color: #1A56DB; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 8px; }
     .page-header h1 { font-size: 26px; font-weight: 800; color: #0A1628; letter-spacing: -0.02em; margin-bottom: 8px; }
     .page-header p { font-size: 14px; color: #6B7280; line-height: 1.6; margin-bottom: 32px; }
-
-    /* Card */
     .card { max-width: 680px; margin: 0 auto; padding: 0 24px 60px; }
     .card-inner { background: #fff; border-radius: 12px; border: 1px solid #E2E6EF; box-shadow: 0 4px 28px rgba(10,22,40,0.07); padding: 40px 44px; }
-
-    /* Section */
     .section { margin-bottom: 40px; }
     .section-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
     .section-num { width: 26px; height: 26px; border-radius: 50%; background: #1A56DB; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .section-title { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 3px; }
     .section-sub { font-size: 13px; color: #6B7280; }
     .section-body { padding-left: 40px; }
-
-    /* Divider */
     .divider { height: 1px; background: #E2E6EF; margin: 8px 0 36px; }
-
-    /* Fields */
     .field { margin-bottom: 16px; }
-    label.lbl { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 5px; }
-    label.lbl .req { color: #1A56DB; margin-left: 3px; }
+    .lbl { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 5px; }
+    .req { color: #1A56DB; margin-left: 3px; }
     .hint { font-size: 12px; color: #6B7280; margin-bottom: 6px; }
-    input, select, textarea {
-      width: 100%; padding: 10px 13px; border-radius: 7px; font-size: 14px;
-      border: 1.5px solid #E2E6EF; background: #fff; color: #111827;
-      font-family: 'Inter', sans-serif; outline: none;
-    }
+    input, select, textarea { width: 100%; padding: 10px 13px; border-radius: 7px; font-size: 14px; border: 1.5px solid #E2E6EF; background: #fff; color: #111827; font-family: 'Inter', sans-serif; outline: none; }
     input:focus, select:focus, textarea:focus { border-color: #1A56DB; }
     textarea { resize: vertical; line-height: 1.65; }
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    /* Sandbox prefix input */
-    .prefix-wrap { display: flex; align-items: center; border: 1.5px solid #E2E6EF; border-radius: 7px; overflow: hidden; }
+    .prefix-wrap { display: flex; align-items: center; border: 1.5px solid #E2E6EF; border-radius: 7px; overflow: hidden; background: #fff; }
     .prefix-wrap:focus-within { border-color: #1A56DB; }
-    .prefix-label { padding: 10px 12px; background: #F3F4F6; border-right: 1.5px solid #E2E6EF; font-size: 13px; color: #6B7280; font-weight: 500; white-space: nowrap; }
-    .prefix-wrap input { border: none; border-radius: 0; flex: 1; }
+    .prefix-text { padding: 10px 12px; background: #F3F4F6; border-right: 1.5px solid #E2E6EF; font-size: 13px; color: #6B7280; font-weight: 500; white-space: nowrap; }
+    .prefix-wrap input { border: none; border-radius: 0; flex: 1; width: auto; }
     .prefix-wrap input:focus { border: none; }
-
-    /* IP cards */
     .ip-grid { display: flex; gap: 12px; margin-top: 4px; }
-    .ip-card { flex: 1; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid #E2E6EF; background: #fff; transition: border-color 0.15s, background 0.15s; }
+    .ip-card { flex: 1; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid #E2E6EF; background: #fff; transition: all 0.15s; }
     .ip-card.active { border-color: #1A56DB; background: #EEF3FF; }
-    .ip-radio { width: 17px; height: 17px; border-radius: 50%; border: 2px solid #CBD5E1; background: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s, background 0.15s; }
+    .ip-radio { width: 17px; height: 17px; border-radius: 50%; border: 2px solid #CBD5E1; background: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
     .ip-card.active .ip-radio { border-color: #1A56DB; background: #1A56DB; }
     .ip-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: none; }
     .ip-card.active .ip-dot { display: block; }
@@ -68,40 +48,26 @@
     .ip-desc { font-size: 11px; color: #6B7280; margin-top: 1px; }
     .ip-extra { margin-top: 12px; background: #EEF3FF; border: 1.5px solid #C7D9FA; border-radius: 8px; padding: 14px 16px; display: none; }
     .ip-extra.show { display: block; }
-
-    /* User rows */
     .user-row { background: #FAFBFD; border: 1px solid #E2E6EF; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
     .user-row-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .user-label { font-size: 11px; font-weight: 700; color: #1A56DB; text-transform: uppercase; letter-spacing: 0.07em; }
+    .user-tag { font-size: 11px; font-weight: 700; color: #1A56DB; text-transform: uppercase; letter-spacing: 0.07em; }
     .user-grid { display: grid; grid-template-columns: 1fr 1fr 2fr 1fr; gap: 10px; }
-    .col-label { font-size: 11px; font-weight: 600; color: #6B7280; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .col-lbl { font-size: 11px; font-weight: 600; color: #6B7280; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
     .user-grid input, .user-grid select { padding: 8px 10px; }
     .btn-remove { background: none; border: none; color: #EF4444; font-size: 12px; font-weight: 600; cursor: pointer; padding: 0; font-family: inherit; }
-
-    /* Add buttons */
     .btn-add { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px dashed #1A56DB; border-radius: 7px; padding: 8px 18px; color: #1A56DB; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 4px; }
-
-    /* Events table */
-    .events-header { display: grid; grid-template-columns: 2fr 1fr 36px; gap: 10px; margin-bottom: 6px; }
-    .events-row { display: grid; grid-template-columns: 2fr 1fr 36px; gap: 10px; margin-bottom: 8px; align-items: center; }
-    .btn-remove-sm { background: none; border: 1px solid #E2E6EF; border-radius: 6px; height: 38px; width: 36px; cursor: pointer; color: #6B7280; font-size: 14px; font-family: inherit; }
-
-    /* Submit */
+    .events-cols { display: grid; grid-template-columns: 2fr 1fr 36px; gap: 10px; margin-bottom: 6px; }
+    .event-row { display: grid; grid-template-columns: 2fr 1fr 36px; gap: 10px; margin-bottom: 8px; align-items: center; }
+    .btn-rm-sm { background: none; border: 1px solid #E2E6EF; border-radius: 6px; height: 38px; width: 36px; cursor: pointer; color: #6B7280; font-size: 14px; font-family: inherit; }
     .btn-submit { width: 100%; padding: 14px; border-radius: 8px; background: #1A56DB; color: #fff; border: none; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 4px 16px rgba(26,86,219,0.3); transition: background 0.15s; }
     .btn-submit:hover { background: #1446b8; }
     .btn-submit:disabled { background: #8AABEE; box-shadow: none; cursor: not-allowed; }
     .form-note { text-align: center; font-size: 12px; color: #9CA3AF; margin-top: 12px; }
-
-    /* Alerts */
     .alert { border-radius: 8px; padding: 13px 18px; margin-bottom: 20px; font-size: 14px; display: flex; align-items: center; gap: 10px; }
     .alert-success { background: #ECFDF5; border: 1px solid #6EE7B7; color: #065F46; }
     .alert-error { background: #FEF2F2; border: 1px solid #FCA5A5; color: #991B1B; }
-    .alert a { color: #1A56DB; font-weight: 600; margin-left: 6px; }
-
-    /* Footer */
     .footer { text-align: center; margin-top: 28px; padding-bottom: 40px; color: #9CA3AF; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .footer strong { color: #1A56DB; font-weight: 700; }
-
     @media (max-width: 600px) {
       .card-inner { padding: 24px 20px; }
       .user-grid { grid-template-columns: 1fr 1fr; }
@@ -112,381 +78,398 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <div class="nav">
-    <svg width="148" height="28" viewBox="0 0 160 32" fill="none">
-      <rect x="0" y="18" width="6" height="12" rx="1.5" fill="#5B9BF8"/>
-      <rect x="9" y="10" width="6" height="20" rx="1.5" fill="#5B9BF8"/>
-      <rect x="18" y="2" width="6" height="28" rx="1.5" fill="#1A56DB"/>
-      <text x="32" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#0A1628" letter-spacing="-0.8">blueshift</text>
+<div class="nav">
+  <svg width="148" height="28" viewBox="0 0 160 32" fill="none">
+    <rect x="0" y="18" width="6" height="12" rx="1.5" fill="#5B9BF8"/>
+    <rect x="9" y="10" width="6" height="20" rx="1.5" fill="#5B9BF8"/>
+    <rect x="18" y="2" width="6" height="28" rx="1.5" fill="#1A56DB"/>
+    <text x="32" y="24" font-family="Inter,sans-serif" font-size="22" font-weight="800" fill="#0A1628" letter-spacing="-0.8">blueshift</text>
+  </svg>
+</div>
+
+<div class="page-header">
+  <p class="eyebrow">Account Provisioning</p>
+  <h1>New account request</h1>
+  <p>Fill in the details below and our team will have your Blueshift account ready within 72 hours.</p>
+</div>
+
+<div class="card">
+  <div class="card-inner">
+    <form id="mainForm">
+
+      <!-- 1. Account details -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">1</div>
+          <div>
+            <div class="section-title">Account details</div>
+            <div class="section-sub">Basic information about the account to be created.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="field">
+            <label class="lbl">Production account name <span class="req">*</span></label>
+            <p class="hint">Must be in domain format, e.g. company.com</p>
+            <input type="text" id="accountName" required placeholder="yourdomain.com" />
+          </div>
+          <div class="grid2 field">
+            <div>
+              <label class="lbl">Sandbox account required?</label>
+              <select id="sandboxSelect">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl">Date needed by <span class="req">*</span></label>
+              <input type="date" id="dateNeeded" required />
+            </div>
+          </div>
+          <div class="field" id="sandboxField" style="display:none">
+            <label class="lbl">Sandbox account name</label>
+            <div class="prefix-wrap">
+              <span class="prefix-text">sandbox.</span>
+              <input type="text" id="sandboxName" placeholder="yourdomain.com" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl">IP setup</label>
+            <div class="ip-grid">
+              <div class="ip-card active" id="cardShared">
+                <div class="ip-radio"><div class="ip-dot"></div></div>
+                <div>
+                  <div class="ip-title">Shared IP</div>
+                  <div class="ip-desc">Use Emred's shared IP pool</div>
+                </div>
+              </div>
+              <div class="ip-card" id="cardDedicated">
+                <div class="ip-radio"><div class="ip-dot"></div></div>
+                <div>
+                  <div class="ip-title">Dedicated IP</div>
+                  <div class="ip-desc">Get your own dedicated IPs</div>
+                </div>
+              </div>
+            </div>
+            <div class="ip-extra" id="ipExtra">
+              <label class="lbl">How many dedicated IPs do you need?</label>
+              <input type="text" id="ipCount" placeholder="e.g. 2 — 1 for marketing, 1 for transactional" style="max-width:320px;margin-top:4px" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 2. Users -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">2</div>
+          <div>
+            <div class="section-title">Users</div>
+            <div class="section-sub">Add all users who need access to this account.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div id="usersContainer"></div>
+          <button type="button" class="btn-add" id="btnAddUser">
+            <span style="font-size:17px;line-height:1">+</span> Add user
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 3. Email config -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">3</div>
+          <div>
+            <div class="section-title">Email configuration</div>
+            <div class="section-sub">Sending domains and addresses for this account.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="field">
+            <label class="lbl">Sending domain</label>
+            <input type="text" id="sendingDomain" placeholder="mail.yourdomain.com" />
+          </div>
+          <div class="field">
+            <label class="lbl">Sender address</label>
+            <input type="text" id="senderAddress" placeholder="hello@yourdomain.com" />
+          </div>
+          <div class="field">
+            <label class="lbl">Link masking domain</label>
+            <input type="text" id="linkDomain" placeholder="links.yourdomain.com" />
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 4. Features -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">4</div>
+          <div>
+            <div class="section-title">Features required</div>
+            <div class="section-sub">List the features and configurations you need enabled.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <textarea id="features" rows="5" placeholder="e.g. segment affinities, holdout groups, Photon recommendations, API catalog updates..."></textarea>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 5. Events -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">5</div>
+          <div>
+            <div class="section-title">Events & data retention</div>
+            <div class="section-sub">Define custom events and their data retention periods.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="events-cols">
+            <span class="col-lbl">Event name</span>
+            <span class="col-lbl">Retention</span>
+            <span></span>
+          </div>
+          <div id="eventsContainer"></div>
+          <button type="button" class="btn-add" id="btnAddEvent">
+            <span style="font-size:17px;line-height:1">+</span> Add event
+          </button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 6. Notes -->
+      <div class="section">
+        <div class="section-head">
+          <div class="section-num">6</div>
+          <div>
+            <div class="section-title">Additional notes</div>
+            <div class="section-sub">Anything else the Blueshift team should know.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <textarea id="notes" rows="4" placeholder="Any other requirements or context..."></textarea>
+        </div>
+      </div>
+
+      <div id="alertBox"></div>
+
+      <button type="button" class="btn-submit" id="btnSubmit">Submit account request →</button>
+      <p class="form-note">Submissions are saved to Google Drive and reviewed within 72 hours.</p>
+
+    </form>
+  </div>
+
+  <div class="footer">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="14" width="5" height="8" rx="1" fill="#5B9BF8"/>
+      <rect x="9.5" y="8" width="5" height="14" rx="1" fill="#5B9BF8"/>
+      <rect x="17" y="2" width="5" height="20" rx="1" fill="#1A56DB"/>
     </svg>
+    <span><strong>blueshift</strong> · AI-Powered Customer Engagement</span>
   </div>
+</div>
 
-  <!-- Page header -->
-  <div class="page-header">
-    <p class="eyebrow">Account Provisioning</p>
-    <h1>New account request</h1>
-    <p>Fill in the details below and our team will have your Blueshift account ready within 72 hours.</p>
-  </div>
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzmP_RDckjOm03pZO4XZbK_ESfPPyf1ZrjErrqGBVh5Awqw6t_RyfZ0ymS2TbwFpeSNfQ/exec'
 
-  <!-- Card -->
-  <div class="card">
-    <div class="card-inner">
-      <form id="provisionForm">
+  // ── IP toggle ───────────────────────────────────────
+  let ipMode = 'shared'
+  document.getElementById('cardShared').addEventListener('click', function() {
+    ipMode = 'shared'
+    document.getElementById('cardShared').classList.add('active')
+    document.getElementById('cardDedicated').classList.remove('active')
+    document.getElementById('ipExtra').classList.remove('show')
+  })
+  document.getElementById('cardDedicated').addEventListener('click', function() {
+    ipMode = 'dedicated'
+    document.getElementById('cardDedicated').classList.add('active')
+    document.getElementById('cardShared').classList.remove('active')
+    document.getElementById('ipExtra').classList.add('show')
+  })
 
-        <!-- 1. Account Details -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">1</div>
-            <div>
-              <div class="section-title">Account details</div>
-              <div class="section-sub">Basic information about the account to be created.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <div class="field">
-              <label class="lbl">Production account name <span class="req">*</span></label>
-              <p class="hint">Must be in domain format, e.g. company.com</p>
-              <input type="text" name="account_name" required placeholder="yourdomain.com" />
-            </div>
-            <div class="grid2 field">
-              <div>
-                <label class="lbl">Sandbox account required?</label>
-                <select name="sandbox_required" id="sandboxSelect" onchange="toggleSandbox()">
-                  <option value="No">No</option>
-                  <option value="Yes">Yes</option>
-                </select>
-              </div>
-              <div>
-                <label class="lbl">Date needed by <span class="req">*</span></label>
-                <input type="date" name="date_needed" required />
-              </div>
-            </div>
-            <div class="field" id="sandboxNameField" style="display:none">
-              <label class="lbl">Sandbox account name</label>
-              <div class="prefix-wrap">
-                <span class="prefix-label">sandbox.</span>
-                <input type="text" name="sandbox_name" placeholder="yourdomain.com" />
-              </div>
-            </div>
-            <div class="field">
-              <label class="lbl">IP setup</label>
-              <div class="ip-grid">
-                <div class="ip-card active" id="ipShared" onclick="selectIP('shared')">
-                  <div class="ip-radio"><div class="ip-dot"></div></div>
-                  <div>
-                    <div class="ip-title">Shared IP</div>
-                    <div class="ip-desc">Use Emred's shared IP pool</div>
-                  </div>
-                </div>
-                <div class="ip-card" id="ipDedicated" onclick="selectIP('dedicated')">
-                  <div class="ip-radio"><div class="ip-dot"></div></div>
-                  <div>
-                    <div class="ip-title">Dedicated IP</div>
-                    <div class="ip-desc">Get your own dedicated IPs</div>
-                  </div>
-                </div>
-              </div>
-              <input type="hidden" name="ip_setup" id="ipSetupInput" value="Shared IP" />
-              <div class="ip-extra" id="ipExtra">
-                <label class="lbl">How many dedicated IPs do you need?</label>
-                <input type="text" name="ip_count" placeholder="e.g. 2 — 1 for marketing, 1 for transactional" style="max-width:320px;margin-top:4px" />
-              </div>
-            </div>
-          </div>
-        </div>
+  // ── Sandbox toggle ──────────────────────────────────
+  document.getElementById('sandboxSelect').addEventListener('change', function() {
+    document.getElementById('sandboxField').style.display = this.value === 'Yes' ? 'block' : 'none'
+  })
 
-        <div class="divider"></div>
+  // ── Users ───────────────────────────────────────────
+  let userCount = 0
+  function addUser() {
+    userCount++
+    var id = userCount
+    var div = document.createElement('div')
+    div.className = 'user-row'
+    div.id = 'user-' + id
+    div.innerHTML =
+      '<div class="user-row-head">' +
+        '<span class="user-tag">User ' + id + '</span>' +
+        '<button type="button" class="btn-remove" onclick="removeUser(' + id + ')">Remove</button>' +
+      '</div>' +
+      '<div class="user-grid">' +
+        '<div>' +
+          '<span class="col-lbl">First name <span style="color:#1A56DB">*</span></span>' +
+          '<input type="text" id="u' + id + '_first" />' +
+        '</div>' +
+        '<div>' +
+          '<span class="col-lbl">Last name</span>' +
+          '<input type="text" id="u' + id + '_last" />' +
+        '</div>' +
+        '<div>' +
+          '<span class="col-lbl">Email <span style="color:#1A56DB">*</span></span>' +
+          '<input type="email" id="u' + id + '_email" />' +
+        '</div>' +
+        '<div>' +
+          '<span class="col-lbl">Access</span>' +
+          '<select id="u' + id + '_access">' +
+            '<option>Admin</option><option>Manager</option><option>Analyst</option><option>Viewer</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>'
+    document.getElementById('usersContainer').appendChild(div)
+    updateRemoveBtns()
+  }
 
-        <!-- 2. Users -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">2</div>
-            <div>
-              <div class="section-title">Users</div>
-              <div class="section-sub">Add all users who need access to this account.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <div id="usersContainer"></div>
-            <button type="button" class="btn-add" onclick="addUser()">
-              <span style="font-size:17px;line-height:1">+</span> Add user
-            </button>
-          </div>
-        </div>
+  function removeUser(id) {
+    var el = document.getElementById('user-' + id)
+    if (el) el.remove()
+    updateRemoveBtns()
+  }
 
-        <div class="divider"></div>
-
-        <!-- 3. Email Config -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">3</div>
-            <div>
-              <div class="section-title">Email configuration</div>
-              <div class="section-sub">Sending domains and addresses for this account.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <div class="field">
-              <label class="lbl">Sending domain</label>
-              <input type="text" name="sending_domain" placeholder="mail.yourdomain.com" />
-            </div>
-            <div class="field">
-              <label class="lbl">Sender address</label>
-              <input type="text" name="sender_address" placeholder="hello@yourdomain.com" />
-            </div>
-            <div class="field">
-              <label class="lbl">Link masking domain</label>
-              <input type="text" name="link_domain" placeholder="links.yourdomain.com" />
-            </div>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- 4. Features -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">4</div>
-            <div>
-              <div class="section-title">Features required</div>
-              <div class="section-sub">List the features and configurations you need enabled.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <textarea name="features" rows="5" placeholder="e.g. segment affinities, holdout groups, Photon recommendations, API catalog updates..."></textarea>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- 5. Events -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">5</div>
-            <div>
-              <div class="section-title">Events & data retention</div>
-              <div class="section-sub">Define custom events and their data retention periods.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <div class="events-header">
-              <span class="col-label">Event name</span>
-              <span class="col-label">Retention</span>
-              <span></span>
-            </div>
-            <div id="eventsContainer"></div>
-            <button type="button" class="btn-add" onclick="addEvent()" style="margin-top:4px">
-              <span style="font-size:17px;line-height:1">+</span> Add event
-            </button>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- 6. Notes -->
-        <div class="section">
-          <div class="section-head">
-            <div class="section-num">6</div>
-            <div>
-              <div class="section-title">Additional notes</div>
-              <div class="section-sub">Anything else the Blueshift team should know.</div>
-            </div>
-          </div>
-          <div class="section-body">
-            <textarea name="additional_notes" rows="4" placeholder="Any other requirements or context..."></textarea>
-          </div>
-        </div>
-
-        <!-- Hidden field to compile users + events as readable text -->
-        <input type="hidden" name="users_summary" id="usersSummary" />
-        <input type="hidden" name="events_summary" id="eventsSummary" />
-
-        <div id="alertBox"></div>
-
-        <button type="submit" class="btn-submit" id="submitBtn">Submit account request →</button>
-        <p class="form-note">Submissions are saved to Google Drive and reviewed within 72 hours.</p>
-
-      </form>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="14" width="5" height="8" rx="1" fill="#5B9BF8"/>
-        <rect x="9.5" y="8" width="5" height="14" rx="1" fill="#5B9BF8"/>
-        <rect x="17" y="2" width="5" height="20" rx="1" fill="#1A56DB"/>
-      </svg>
-      <span><strong>blueshift</strong> · AI-Powered Customer Engagement</span>
-    </div>
-  </div>
-
-  <script>
-    // ── IP toggle ──────────────────────────────────────
-    function selectIP(type) {
-      document.getElementById('ipShared').classList.toggle('active', type === 'shared')
-      document.getElementById('ipDedicated').classList.toggle('active', type === 'dedicated')
-      document.getElementById('ipSetupInput').value = type === 'shared' ? 'Shared IP' : 'Dedicated IP'
-      document.getElementById('ipExtra').classList.toggle('show', type === 'dedicated')
-    }
-
-    // ── Sandbox toggle ─────────────────────────────────
-    function toggleSandbox() {
-      const val = document.getElementById('sandboxSelect').value
-      document.getElementById('sandboxNameField').style.display = val === 'Yes' ? 'block' : 'none'
-    }
-
-    // ── Users ──────────────────────────────────────────
-    let userCount = 0
-    function addUser(firstName='', lastName='', email='', access='Admin') {
-      userCount++
-      const id = userCount
-      const c = document.getElementById('usersContainer')
-      const div = document.createElement('div')
-      div.className = 'user-row'
-      div.id = `user-${id}`
-      div.innerHTML = `
-        <div class="user-row-head">
-          <span class="user-label">User ${id}</span>
-          <button type="button" class="btn-remove" onclick="removeUser(${id})">Remove</button>
-        </div>
-        <div class="user-grid">
-          <div>
-            <span class="col-label">First name <span style="color:#1A56DB">*</span></span>
-            <input type="text" data-user="${id}" data-field="first" required value="${firstName}" />
-          </div>
-          <div>
-            <span class="col-label">Last name</span>
-            <input type="text" data-user="${id}" data-field="last" value="${lastName}" />
-          </div>
-          <div>
-            <span class="col-label">Email <span style="color:#1A56DB">*</span></span>
-            <input type="email" data-user="${id}" data-field="email" required value="${email}" />
-          </div>
-          <div>
-            <span class="col-label">Access</span>
-            <select data-user="${id}" data-field="access">
-              ${['Admin','Manager','Analyst','Viewer'].map(a => `<option${a===access?' selected':''}>${a}</option>`).join('')}
-            </select>
-          </div>
-        </div>`
-      c.appendChild(div)
-      updateRemoveButtons()
-    }
-
-    function removeUser(id) {
-      document.getElementById(`user-${id}`)?.remove()
-      updateRemoveButtons()
-    }
-
-    function updateRemoveButtons() {
-      const rows = document.querySelectorAll('.user-row')
-      rows.forEach(r => {
-        r.querySelector('.btn-remove').style.display = rows.length > 1 ? 'inline' : 'none'
-      })
-    }
-
-    function getUsersSummary() {
-      const rows = document.querySelectorAll('.user-row')
-      return Array.from(rows).map((r, i) => {
-        const first = r.querySelector('[data-field="first"]')?.value || ''
-        const last  = r.querySelector('[data-field="last"]')?.value || ''
-        const email = r.querySelector('[data-field="email"]')?.value || ''
-        const access= r.querySelector('[data-field="access"]')?.value || ''
-        return `${i+1}. ${first} ${last} | ${email} | ${access}`
-      }).join('\n')
-    }
-
-    // ── Events ─────────────────────────────────────────
-    let eventCount = 0
-    function addEvent(name='', retention='') {
-      eventCount++
-      const id = eventCount
-      const c = document.getElementById('eventsContainer')
-      const div = document.createElement('div')
-      div.className = 'events-row'
-      div.id = `event-${id}`
-      div.innerHTML = `
-        <input type="text" data-event="${id}" data-field="name" placeholder="event_name" value="${name}" />
-        <input type="text" data-event="${id}" data-field="retention" placeholder="e.g. 1 year" value="${retention}" />
-        <button type="button" class="btn-remove-sm" onclick="removeEvent(${id})">✕</button>`
-      c.appendChild(div)
-    }
-
-    function removeEvent(id) {
-      document.getElementById(`event-${id}`)?.remove()
-    }
-
-    function getEventsSummary() {
-      const rows = document.querySelectorAll('.events-row')
-      return Array.from(rows).map(r => {
-        const name = r.querySelector('[data-field="name"]')?.value || ''
-        const ret  = r.querySelector('[data-field="retention"]')?.value || ''
-        return `${name}: ${ret}`
-      }).join('\n')
-    }
-
-    // ── Init defaults ──────────────────────────────────
-    addUser()
-    addEvent('purchase', '3 years')
-    addEvent('purchase_reminder', '4 months')
-
-    // ── Form submit → Formspree ────────────────────────
-    document.getElementById('provisionForm').addEventListener('submit', async function(e) {
-      e.preventDefault()
-      document.getElementById('usersSummary').value = getUsersSummary()
-      document.getElementById('eventsSummary').value = getEventsSummary()
-
-      const btn = document.getElementById('submitBtn')
-      const alertBox = document.getElementById('alertBox')
-      btn.disabled = true
-      btn.textContent = 'Submitting…'
-      alertBox.innerHTML = ''
-
-      const data = new FormData(this)
-
-      try {
-        const res = await fetch('https://script.google.com/macros/s/AKfycbzmP_RDckjOm03pZO4XZbK_ESfPPyf1ZrjErrqGBVh5Awqw6t_RyfZ0ymS2TbwFpeSNfQ/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            account_name: data.get('account_name'),
-            sandbox_required: data.get('sandbox_required'),
-            sandbox_name: data.get('sandbox_name'),
-            date_needed: data.get('date_needed'),
-            ip_setup: data.get('ip_setup'),
-            ip_count: data.get('ip_count'),
-            users_summary: data.get('users_summary'),
-            sending_domain: data.get('sending_domain'),
-            sender_address: data.get('sender_address'),
-            link_domain: data.get('link_domain'),
-            features: data.get('features'),
-            events_summary: data.get('events_summary'),
-            additional_notes: data.get('additional_notes'),
-          }),
-          headers: { 'Content-Type': 'application/json' }
-        })
-        if (res.ok) {
-          const json = await res.json()
-          if (json.success) {
-          alertBox.innerHTML = `<div class="alert alert-success">✓ Request submitted successfully. We'll have your account ready within 72 hours.</div>`
-          this.reset()
-          document.getElementById('usersContainer').innerHTML = ''
-          document.getElementById('eventsContainer').innerHTML = ''
-          userCount = 0; eventCount = 0
-          addUser()
-          addEvent('purchase', '3 years')
-          addEvent('purchase_reminder', '4 months')
-          btn.textContent = 'Submitted ✓'
-        } else {
-          throw new Error('Network error')
-        }
-      } catch (err) {
-        alertBox.innerHTML = `<div class="alert alert-error">Error: ${err.message}. Please try again or email satyajeet.godbole@getblueshift.com directly.</div>`
-        btn.disabled = false
-        btn.textContent = 'Submit account request →'
-      }
+  function updateRemoveBtns() {
+    var rows = document.querySelectorAll('.user-row')
+    rows.forEach(function(r) {
+      var btn = r.querySelector('.btn-remove')
+      if (btn) btn.style.display = rows.length > 1 ? 'inline' : 'none'
     })
-  </script>
+  }
+
+  function getUsersSummary() {
+    var rows = document.querySelectorAll('.user-row')
+    var lines = []
+    var idx = 1
+    rows.forEach(function(r) {
+      var id = r.id.replace('user-', '')
+      var first = (document.getElementById('u' + id + '_first') || {}).value || ''
+      var last  = (document.getElementById('u' + id + '_last')  || {}).value || ''
+      var email = (document.getElementById('u' + id + '_email') || {}).value || ''
+      var access= (document.getElementById('u' + id + '_access')|| {}).value || ''
+      lines.push('  ' + idx + '. ' + first + ' ' + last + ' | ' + email + ' | ' + access)
+      idx++
+    })
+    return lines.join('\n')
+  }
+
+  // ── Events ──────────────────────────────────────────
+  var eventIds = []
+  function addEvent(name, retention) {
+    var id = Date.now()
+    eventIds.push(id)
+    var div = document.createElement('div')
+    div.className = 'event-row'
+    div.id = 'event-' + id
+    div.innerHTML =
+      '<input type="text" id="ev' + id + '_name" placeholder="event_name" value="' + (name || '') + '" />' +
+      '<input type="text" id="ev' + id + '_ret" placeholder="e.g. 1 year" value="' + (retention || '') + '" />' +
+      '<button type="button" class="btn-rm-sm" onclick="removeEvent(' + id + ')">✕</button>'
+    document.getElementById('eventsContainer').appendChild(div)
+  }
+
+  function removeEvent(id) {
+    var el = document.getElementById('event-' + id)
+    if (el) el.remove()
+    eventIds = eventIds.filter(function(i) { return i !== id })
+  }
+
+  function getEventsSummary() {
+    var lines = []
+    document.querySelectorAll('.event-row').forEach(function(r) {
+      var id = r.id.replace('event-', '')
+      var name = (document.getElementById('ev' + id + '_name') || {}).value || ''
+      var ret  = (document.getElementById('ev' + id + '_ret')  || {}).value || ''
+      if (name) lines.push('  ' + name + ': ' + ret)
+    })
+    return lines.join('\n')
+  }
+
+  // ── Init defaults ───────────────────────────────────
+  document.getElementById('btnAddUser').addEventListener('click', addUser)
+  document.getElementById('btnAddEvent').addEventListener('click', function() { addEvent('', '') })
+  addUser()
+  addEvent('purchase', '3 years')
+  addEvent('purchase_reminder', '4 months')
+
+  // ── Submit ──────────────────────────────────────────
+  document.getElementById('btnSubmit').addEventListener('click', function() {
+    var accountName = document.getElementById('accountName').value.trim()
+    if (!accountName) {
+      alert('Please enter the production account name.')
+      return
+    }
+    if (!document.getElementById('dateNeeded').value) {
+      alert('Please enter the date needed by.')
+      return
+    }
+
+    var btn = document.getElementById('btnSubmit')
+    var alertBox = document.getElementById('alertBox')
+    btn.disabled = true
+    btn.textContent = 'Submitting…'
+    alertBox.innerHTML = ''
+
+    var payload = {
+      account_name:     accountName,
+      sandbox_required: document.getElementById('sandboxSelect').value,
+      sandbox_name:     document.getElementById('sandboxName').value,
+      date_needed:      document.getElementById('dateNeeded').value,
+      ip_setup:         ipMode === 'shared' ? 'Shared IP' : 'Dedicated IP',
+      ip_count:         document.getElementById('ipCount').value,
+      users_summary:    getUsersSummary(),
+      sending_domain:   document.getElementById('sendingDomain').value,
+      sender_address:   document.getElementById('senderAddress').value,
+      link_domain:      document.getElementById('linkDomain').value,
+      features:         document.getElementById('features').value,
+      events_summary:   getEventsSummary(),
+      additional_notes: document.getElementById('notes').value,
+    }
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function() {
+      alertBox.innerHTML = '<div class="alert alert-success">✓ Request submitted successfully. Our team will have your account ready within 72 hours.</div>'
+      document.getElementById('mainForm').reset()
+      document.getElementById('usersContainer').innerHTML = ''
+      document.getElementById('eventsContainer').innerHTML = ''
+      document.getElementById('sandboxField').style.display = 'none'
+      document.getElementById('ipExtra').classList.remove('show')
+      document.getElementById('cardShared').classList.add('active')
+      document.getElementById('cardDedicated').classList.remove('active')
+      ipMode = 'shared'
+      userCount = 0
+      eventIds = []
+      addUser()
+      addEvent('purchase', '3 years')
+      addEvent('purchase_reminder', '4 months')
+      btn.textContent = 'Submitted ✓'
+    })
+    .catch(function(err) {
+      alertBox.innerHTML = '<div class="alert alert-error">Error submitting form. Please try again.</div>'
+      btn.disabled = false
+      btn.textContent = 'Submit account request →'
+    })
+  })
+</script>
 </body>
 </html>
