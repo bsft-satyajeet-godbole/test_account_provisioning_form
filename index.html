@@ -305,7 +305,7 @@
         <div id="alertBox"></div>
 
         <button type="submit" class="btn-submit" id="submitBtn">Submit account request →</button>
-        <p class="form-note">Submission will be emailed to the Blueshift team and reviewed within 72 hours.</p>
+        <p class="form-note">Submissions are saved to Google Drive and reviewed within 72 hours.</p>
 
       </form>
     </div>
@@ -446,12 +446,28 @@
       const data = new FormData(this)
 
       try {
-        const res = await fetch('https://formspree.io/f/mbdpeyjy', {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbxMM9Fw1KjsxFfGMCqihsGgck7dV-85nxIpfM3ExPxkct7Jlwir_Xy9MWjl9FX34jh7Gg/exec', {
           method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' }
+          body: JSON.stringify({
+            account_name: data.get('account_name'),
+            sandbox_required: data.get('sandbox_required'),
+            sandbox_name: data.get('sandbox_name'),
+            date_needed: data.get('date_needed'),
+            ip_setup: data.get('ip_setup'),
+            ip_count: data.get('ip_count'),
+            users_summary: data.get('users_summary'),
+            sending_domain: data.get('sending_domain'),
+            sender_address: data.get('sender_address'),
+            link_domain: data.get('link_domain'),
+            features: data.get('features'),
+            events_summary: data.get('events_summary'),
+            additional_notes: data.get('additional_notes'),
+          }),
+          headers: { 'Content-Type': 'application/json' }
         })
         if (res.ok) {
+          const json = await res.json()
+          if (json.success) {
           alertBox.innerHTML = `<div class="alert alert-success">✓ Request submitted successfully. We'll have your account ready within 72 hours.</div>`
           this.reset()
           document.getElementById('usersContainer').innerHTML = ''
@@ -462,8 +478,7 @@
           addEvent('purchase_reminder', '4 months')
           btn.textContent = 'Submitted ✓'
         } else {
-          const json = await res.json()
-          throw new Error(json?.errors?.[0]?.message || 'Submission failed')
+          throw new Error('Network error')
         }
       } catch (err) {
         alertBox.innerHTML = `<div class="alert alert-error">Error: ${err.message}. Please try again or email satyajeet.godbole@getblueshift.com directly.</div>`
